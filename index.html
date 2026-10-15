@@ -24,10 +24,8 @@
 <div class="tot"><span>Subtotal</span><span id="sub">Rp0</span></div>
 <label class="tot"><span>Diskon (%)</span><input id="disc" type="number" min="0" max="100" value="0" style="width:80px"></label>
 <div class="tot big"><span>Total</span><span id="total">Rp0</span></div>
-<select class="pay" id="method" aria-label="Metode pembayaran"><option>Tunai</option><option>QRIS</option><option>Transfer Bank</option><option>Kartu Debit</option></select>
-<div id="qrisBox" hidden><img id="qrisImg" alt="Kode QRIS toko" hidden><p id="qrisEmpty">Belum ada gambar QRIS toko. Unggah foto atau tangkapan layar QRIS Anda di bawah.</p><div class="tot big"><span>Nominal</span><b id="qrisAmt">Rp0</b></div><label class="ghost" style="display:block">Unggah atau ganti gambar QRIS<input type="file" id="qrisFile" accept="image/*" style="width:100%"></label></div>
+<input type="hidden" id="method" value="Tunai">
 <div id="cashBox"><input class="pay" id="paid" type="number" min="0" placeholder="Uang diterima (Rp)" aria-label="Uang diterima">
-<div class="quick"><button class="mini" data-v="pas">Uang pas</button><button class="mini" data-v="50000">50rb</button><button class="mini" data-v="100000">100rb</button><button class="mini" data-v="200000">200rb</button></div>
 <div class="tot big"><span id="chgL">Kembalian</span><b id="chg">Rp0</b></div></div>
 <p class="err" id="err" role="alert"></p>
 <button class="go" id="go" disabled>Bayar</button>

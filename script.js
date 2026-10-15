@@ -16,9 +16,6 @@ const $=id=>document.getElementById(id);
 
 $('cat').innerHTML='<option value="">Semua kategori</option>'+Object.keys(COLORS).map(c=>`<option>${c}</option>`).join('');
 
-let qris=null;try{qris=localStorage.getItem('kk_qris')}catch(e){}
-function renderQris(){const on=$('method').value==='QRIS';$('qrisBox').hidden=!on;if(!on)return;$('qrisImg').hidden=!qris;if(qris)$('qrisImg').src=qris;$('qrisEmpty').hidden=!!qris;$('qrisAmt').textContent=rp(totals().total)}
-$('qrisFile').onchange=e=>{const f=e.target.files[0];if(!f)return;if(f.size>1572864){$('err').textContent='Gambar QRIS terlalu besar. Gunakan gambar di bawah 1,5 MB.';return}$('err').textContent='';const r=new FileReader();r.onload=()=>{qris=r.result;try{localStorage.setItem('kk_qris',qris)}catch(x){}renderQris()};r.readAsDataURL(f)};
 function renderGrid(){
  const q=$('q').value.toLowerCase(),c=$('cat').value;
  const list=products.filter(p=>p.title.toLowerCase().includes(q)&&(!c||p.cat===c));
@@ -35,7 +32,7 @@ function renderCart(){
  $('cart').innerHTML=ids.length?ids.map(id=>{const p=products.find(x=>x.id==id);return `<div class="row"><div><b>${p.title}</b><br><small>${rp(p.price)}</small></div><div class="qty"><button data-d="-1" data-id="${id}" aria-label="Kurangi">-</button> ${cart[id]} <button data-d="1" data-id="${id}" aria-label="Tambah">+</button></div></div>`}).join(''):'<p>Keranjang kosong. Klik komik untuk menambahkan.</p>';
  const t=totals();$('sub').textContent=rp(t.sub);$('total').textContent=rp(t.total);
  const paid=+$('paid').value||0;$('cashBox').hidden=$('method').value!=='Tunai';const diff=paid-t.total,short=paid>0&&diff<0;$('chgL').textContent=short?'Kurang':'Kembalian';$('chg').textContent=rp(paid>0?Math.abs(diff):0);$('chg').style.color=short?'var(--red)':'';
- $('go').disabled=!ids.length;$('go').textContent=$('method').value==='QRIS'?'QRIS sudah dibayar':'Bayar';renderQris();renderGrid();
+ $('go').disabled=!ids.length;$('go').textContent='Bayar';renderGrid();
 }
 $('grid').onclick=e=>{const b=e.target.closest('.card');if(!b)return;const id=b.dataset.id,p=products.find(x=>x.id==id);
  if((cart[id]||0)<p.stock){cart[id]=(cart[id]||0)+1;renderCart()}};
@@ -43,7 +40,6 @@ $('cart').onclick=e=>{const b=e.target.closest('button');if(!b)return;const id=b
  cart[id]=(cart[id]||0)+ +b.dataset.d;if(cart[id]<=0)delete cart[id];if(cart[id]>p.stock)cart[id]=p.stock;renderCart()};
 ['q','cat'].forEach(i=>$(i).oninput=renderGrid);
 ['disc','paid','method'].forEach(i=>$(i).oninput=renderCart);
-document.querySelector('.quick').onclick=e=>{const b=e.target.closest('button');if(!b)return;$('paid').value=b.dataset.v==='pas'?Math.round(totals().total):b.dataset.v;renderCart()};
 $('clr').onclick=()=>{cart={};$('err').textContent='';renderCart()};
 
 $('go').onclick=()=>{
