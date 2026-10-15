@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manga District</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>Manga District</h1>
+<nav><button class="tab" id="tKasir" aria-pressed="true">Kasir</button><button class="tab" id="tRiwayat" aria-pressed="false">Riwayat</button></nav>
+</header>
+
+<main id="vKasir">
+<section class="panel">
+<div class="tools"><input id="q" type="search" placeholder="Cari judul komik" aria-label="Cari judul komik"><select id="cat" aria-label="Kategori"></select></div>
+<div class="grid" id="grid"></div>
+</section>
+<aside class="panel">
+<h2 style="margin:0 0 6px" class="big">Keranjang</h2>
+<div id="cart"></div>
+<div class="tot"><span>Subtotal</span><span id="sub">Rp0</span></div>
+<label class="tot"><span>Diskon (%)</span><input id="disc" type="number" min="0" max="100" value="0" style="width:80px"></label>
+<div class="tot big"><span>Total</span><span id="total">Rp0</span></div>
+<select class="pay" id="method" aria-label="Metode pembayaran"><option>Tunai</option><option>QRIS</option><option>Transfer Bank</option><option>Kartu Debit</option></select>
+<div id="qrisBox" hidden><img id="qrisImg" alt="Kode QRIS toko" hidden><p id="qrisEmpty">Belum ada gambar QRIS toko. Unggah foto atau tangkapan layar QRIS Anda di bawah.</p><div class="tot big"><span>Nominal</span><b id="qrisAmt">Rp0</b></div><label class="ghost" style="display:block">Unggah atau ganti gambar QRIS<input type="file" id="qrisFile" accept="image/*" style="width:100%"></label></div>
+<div id="cashBox"><input class="pay" id="paid" type="number" min="0" placeholder="Uang diterima (Rp)" aria-label="Uang diterima">
+<div class="quick"><button class="mini" data-v="pas">Uang pas</button><button class="mini" data-v="50000">50rb</button><button class="mini" data-v="100000">100rb</button><button class="mini" data-v="200000">200rb</button></div>
+<div class="tot big"><span id="chgL">Kembalian</span><b id="chg">Rp0</b></div></div>
+<p class="err" id="err" role="alert"></p>
+<button class="go" id="go" disabled>Bayar</button>
+<button class="ghost" id="clr">Kosongkan keranjang</button>
+</aside>
+</main>
+
+<main id="vRiwayat" hidden style="grid-template-columns:1fr">
+<section class="panel">
+<h2 class="big" style="margin:0 0 8px">Riwayat Penjualan</h2>
+<p id="sum"></p>
+<div class="scroll"><table><thead><tr><th>No</th><th>Waktu</th><th>Item</th><th>Total</th><th>Metode</th><th></th></tr></thead><tbody id="hist"></tbody></table></div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:10px"><button class="mini" id="clrHist">Hapus riwayat penjualan</button><button class="ghost" id="reset">Reset data stok dan riwayat</button></div>
+</section>
+</main>
+
+<dialog id="dlg"><div id="rcpt"></div><div class="acts"><button class="go prt" id="prt">Cetak struk</button><button class="go" id="ok">Selesai</button></div><p class="noprint" id="pmsg" role="status"></p></dialog>
+
+<script src="script.js"></script>
+</body>
+</html>

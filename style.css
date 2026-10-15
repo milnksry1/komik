@@ -1,0 +1,67 @@
+:root{--bg:#EEF3FA;--panel:#fff;--ink:#14213D;--muted:#5b6784;--pop:#FFD23F;--red:#E63946;--teal:#1F9E91;--line:#14213D;--dot:rgba(20,33,61,.09);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1424;--panel:#18213a;--ink:#f1f4fb;--muted:#9aa6c4;--line:#f1f4fb;--dot:rgba(255,255,255,.06)}}
+:root[data-theme="dark"]{--bg:#0e1424;--panel:#18213a;--ink:#f1f4fb;--muted:#9aa6c4;--line:#f1f4fb;--dot:rgba(255,255,255,.06)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg) radial-gradient(var(--dot) 1.2px,transparent 1.4px) 0 0/14px 14px;color:var(--ink);font:600 15px/1.45 Nunito,system-ui,sans-serif}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--pop);color:#14213D;border-bottom:4px solid #14213D}
+h1{font:400 34px/1 Bangers,Impact,sans-serif;letter-spacing:1.5px;margin:0;text-shadow:3px 3px 0 #fff}
+nav{display:flex;gap:8px}
+button,input,select{font:inherit;color:inherit}
+.tab{padding:7px 14px;border:3px solid #14213D;background:#fff;color:#14213D;border-radius:6px;cursor:pointer;font-weight:800}
+.tab[aria-pressed=true]{background:#14213D;color:#FFD23F}
+main{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;padding:18px 20px;max-width:1200px;margin:auto}
+@media(max-width:860px){main{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:3px solid var(--line);border-radius:6px;box-shadow:6px 6px 0 var(--line);padding:14px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+input,select{padding:8px 10px;border:3px solid var(--line);border-radius:6px;background:var(--panel)}
+#q{flex:1;min-width:150px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.card{border:3px solid var(--line);border-radius:6px;background:var(--bg);padding:0;cursor:pointer;text-align:left;overflow:hidden;display:flex;flex-direction:column}
+.card:hover:not(:disabled){transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--line)}
+.card:disabled{opacity:.5;cursor:not-allowed}
+.cover{height:84px;display:flex;align-items:flex-end;padding:8px;font:400 19px/1 Bangers,Impact,sans-serif;letter-spacing:1px;color:#fff;border-bottom:3px solid var(--line)}
+.info{padding:8px 10px}.info b{display:block}.info small{color:var(--muted)}
+.price{color:var(--red);font-weight:800}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:2px dashed var(--muted)}
+.qty button{width:26px;height:26px;border:2px solid var(--line);background:var(--pop);color:#14213D;border-radius:4px;cursor:pointer;font-weight:800}
+.tot{display:flex;justify-content:space-between;padding:3px 0}
+.big{font:400 30px/1 Bangers,Impact,sans-serif;letter-spacing:1px}
+.pay{width:100%;margin:6px 0}
+.go{width:100%;margin-top:10px;padding:12px;border:3px solid var(--line);border-radius:6px;background:var(--red);color:#fff;font:400 24px Bangers,Impact,sans-serif;letter-spacing:1.5px;cursor:pointer}
+.go:disabled{opacity:.45;cursor:not-allowed}
+.ghost{background:none;border:none;color:var(--muted);cursor:pointer;text-decoration:underline}
+.err{color:var(--red);min-height:1.3em;margin:4px 0 0}
+dialog{border:3px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);max-width:360px;width:92%;box-shadow:8px 8px 0 var(--line)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:7px 6px;border-bottom:2px solid var(--dot)}
+.scroll{overflow-x:auto}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+#rcpt{font-family:'Courier New',monospace;font-size:13px}#rcpt h2{text-align:center}.ctr{text-align:center}
+.acts{display:flex;gap:8px;margin-top:10px}.acts .go{margin:0;font-size:18px}.prt{background:var(--teal)}.quick{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 8px}#qrisImg{width:100%;max-width:260px;display:block;margin:6px auto;border:3px solid var(--line);border-radius:6px;background:#fff}
+.mini{padding:3px 8px;border:2px solid var(--line);border-radius:4px;background:var(--pop);color:#14213D;font-weight:800;cursor:pointer}
+@media print{body>*:not(dialog){display:none!important}dialog{position:static;box-shadow:none;border:none;width:80mm;max-width:80mm;margin:0;padding:0;color:#000;background:#fff}dialog::backdrop{display:none}.acts,.noprint{display:none}}
+/* Tema halaman manga: tinta hitam di atas kertas putih, satu aksen merah */
+:root{--bg:#F1F2F4;--panel:#fff;--ink:#16161A;--muted:#6a6d76;--pop:#16161A;--red:#C8102E;--teal:#16161A;--line:#16161A;--dot:rgba(0,0,0,.06)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121316;--panel:#1b1c21;--ink:#f2f2f4;--muted:#9a9ca6;--pop:#f2f2f4;--red:#E5334B;--line:#3a3c46;--dot:rgba(255,255,255,.06)}}
+:root[data-theme="dark"]{--bg:#121316;--panel:#1b1c21;--ink:#f2f2f4;--muted:#9a9ca6;--pop:#f2f2f4;--red:#E5334B;--line:#3a3c46;--dot:rgba(255,255,255,.06)}
+body{background:var(--bg);font:500 15px/1.5 'Zen Kaku Gothic New',system-ui,sans-serif}
+header{background:#16161A;color:#fff;border-bottom:3px solid var(--red)}
+h1{font:700 28px/1 'Shippori Mincho','Hiragino Mincho ProN',Georgia,serif;letter-spacing:.5px;text-shadow:none}
+.big{font:700 22px/1.1 'Shippori Mincho','Hiragino Mincho ProN',Georgia,serif;letter-spacing:0}
+.tab{border:1px solid #fff;background:transparent;color:#fff;border-radius:2px;font-weight:700}
+.tab[aria-pressed=true]{background:#fff;color:#16161A}
+.panel{border:1px solid var(--line);border-radius:2px;box-shadow:none}
+input,select{border:1px solid var(--line);border-radius:2px}
+.card{border:1px solid var(--line);border-radius:2px;background:var(--panel)}
+.card:hover:not(:disabled){transform:none;box-shadow:inset 0 0 0 2px var(--red)}
+.cover{height:72px;border-bottom:1px solid var(--line);font:700 15px/1.2 'Shippori Mincho',Georgia,serif;letter-spacing:0}
+.row{border-bottom:1px solid rgba(128,128,128,.3)}
+.qty button,.mini{background:var(--ink);color:var(--panel);border:1px solid var(--ink);border-radius:2px}
+.go{font:700 17px 'Zen Kaku Gothic New',system-ui,sans-serif;letter-spacing:.5px;border:1px solid var(--red);border-radius:2px;background:var(--red);color:#fff}
+.prt{background:var(--ink);border-color:var(--ink);color:var(--panel)}
+dialog{border:1px solid var(--line);border-radius:2px;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+#qrisImg{border:1px solid var(--line);border-radius:2px}
+:focus-visible{outline:3px solid var(--red)}
+@media print{dialog{border:none;box-shadow:none}}
